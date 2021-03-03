@@ -1,16 +1,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-.weather-application {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 20px;
-  border: 1px solid #dadde1;
-  border-radius: 5px;
-}
-/* max width ensures that the elements on the page do not extend the full width of the page */
-/* margin being set to auto allows elements to remain centered on the page, even if the window size changes */
-/* as a reminder, border-radius rounds the corners of the border */
+
 h1 {
   color: #878787;
   font-size: 24px;
@@ -18,10 +9,12 @@ h1 {
   line-height: 28px;
   margin-bottom: 0;
 }
+
 ul {
   margin: 0;
   padding: 0;
 }
+
 li {
   list-style: none;
   margin: 0;
@@ -30,4 +23,47 @@ li {
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;
+}
+
+.weather-application-wrapper {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.weather-application {
+  padding: 20px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+}
+/* max width ensures that the elements on the page do not extend the full width of the page */
+/* margin being set to auto allows elements to remain centered on the page, even if the window size changes */
+/* as a reminder, border-radius rounds the corners of the border */
+
+.location-overview {
+  margin-bottom: 20px;
+}
+
+#weather-image,
+#current-temperature {
+  float: left;
+}
+/* clearfix didn't work for some reason, so instead I gave each element a div with an id, then just added float: left via CSS */
+
+#weather-image {
+  margin-right: 5px;
+  height: 64px;
+  width: 64px;
+}
+
+#current-temperature strong {
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+#temperature-units {
+  position: relative;
+  top: -34px;
+  font-size: 16px;
 }

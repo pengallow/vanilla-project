@@ -11,35 +11,43 @@
 </head>
 <body>
     <div class="container">
-        <div class="weather-application">
-            <h1>
-                Virginia Beach
-            </h1>
-            <ul>
-                <li>
-                    Friday 18:18
-                </li>
-                <li>
-                    Rain
-                </li>
-            </ul>
-            <div class="row">
-                <div class="col-6">
-                    <img src="https://ssl.gstatic.com/onebox/weather/64/rain.png" alt="Cloud with rain" />
-                    7 ºC | ºF
-                </div>
-                <div class="col-6">
+        <div class="weather-application-wrapper">
+            <div class="weather-application">
+                <div class="location-overview">
+                    <h1>
+                        Virginia Beach
+                    </h1>
                     <ul>
                         <li>
-                            Precipitation: 74%
+                            Friday 18:18
                         </li>
                         <li>
-                            Humidity: 81%
-                        </li>
-                        <li>
-                            Wind: 18 km/h
+                            Rain
                         </li>
                     </ul>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div id="weather-image">
+                            <img src="https://ssl.gstatic.com/onebox/weather/64/rain.png" alt="Cloud with rain" />
+                        </div>
+                        <div id="current-temperature">
+                            <strong>7</strong><span id="temperature-units">ºC | <a href="#">ºF</a></span>
+                        </div>                           
+                    </div>
+                    <div class="col-6">
+                        <ul>
+                            <li>
+                                Precipitation: 74%
+                            </li>
+                            <li>
+                                Humidity: 81%
+                            </li>
+                            <li>
+                                Wind: 18 km/h
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <small>
