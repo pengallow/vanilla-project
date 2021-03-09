@@ -20,12 +20,16 @@ li {
   margin: 0;
   padding: 0;
   color: #878787;
-  text-transform: capitalize;
   font-size: 16px;
   font-weight: 100;
   line-height: 19px;
 }
 /* text-transform: capitalize will capitalize the first letter of each word */
+
+li:first-letter {
+  text-transform: capitalize;
+}
+/* This will target just the first letter in each li */
 
 .weather-application-wrapper {
   max-width: 600px;
