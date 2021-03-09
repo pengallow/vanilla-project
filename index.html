@@ -9,22 +9,19 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="src/style.css" />
     <script src="src/script.js" defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="weather-application-wrapper">
             <div class="weather-application">
                 <div class="location-overview">
-                    <h1>
-                        Virginia Beach
-                    </h1>
+                    <h1 id="city"></h1>
                     <ul>
                         <li>
                             Friday 18:18
                         </li>
-                        <li>
-                            Rain
-                        </li>
+                        <li id="current-condition"></li>
                     </ul>
                 </div>
                 <div class="row">
@@ -33,19 +30,16 @@
                             <img src="https://ssl.gstatic.com/onebox/weather/64/rain.png" alt="Cloud with rain" />
                         </div>
                         <div id="current-temperature">
-                            <strong>7</strong><span id="temperature-units">ºC | <a href="#">ºF</a></span>
+                            <strong id="temperature"></strong><span id="temperature-units">ºC | <a href="#">ºF</a></span>
                         </div>                           
                     </div>
                     <div class="col-6">
                         <ul>
                             <li>
-                                Precipitation: 74%
+                                Humidity: <span id="humidity"></span>%
                             </li>
                             <li>
-                                Humidity: 81%
-                            </li>
-                            <li>
-                                Wind: 18 km/h
+                                Wind: <span id="wind"></span> km/h
                             </li>
                         </ul>
                     </div>
