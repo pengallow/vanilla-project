@@ -19,7 +19,7 @@ function formatDate(timestamp) {
 // the time is based on the last update in the API, not from when the user accesses
 
 function displayTemperature(response) {
-    console.log(response.data);
+    //console.log(response.data);
     //console.log(response.data.main.temp);
 
     let temperatureElement = document.querySelector("#temperature");
@@ -28,7 +28,7 @@ function displayTemperature(response) {
     let humidityElement = document.querySelector("#humidity");
     let windElement = document.querySelector("#wind");
     let dateElement = document.querySelector("#date");
-    //let weatherIconElement = document.querySelector("#weather-icon");
+    let weatherIconElement = document.querySelector("#weather-icon");
 
     temperatureElement.innerHTML = Math.round(response.data.main.temp);
     cityElement.innerHTML = response.data.name;
@@ -36,8 +36,10 @@ function displayTemperature(response) {
     humidityElement.innerHTML = response.data.main.humidity;
     windElement.innerHTML = Math.round(response.data.wind.speed);
     dateElement.innerHTML = formatDate(response.data.dt * 1000);
-    //weatherIconElement.innerHTML = 
+    weatherIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+    weatherIconElement.setAttribute("alt", document.querySelector("#current-condition"));
 }
+// set attribute changes the attritbute in the HTML
 
 let apiKey = "3b69d9e884899e81040ee4e357f33f8b";
 let city = "Virginia Beach";
