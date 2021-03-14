@@ -49,19 +49,14 @@ li:first-letter {
   margin-bottom: 20px;
 }
 
-#weather-image,
-#current-temperature {
-  float: left;
-}
-/* clearfix didn't work for some reason, so instead I gave each element a div with an id, then just added float: left via CSS */
-
-#weather-image {
+#weather-icon {
   margin-right: 5px;
   height: 64px;
   width: 64px;
+  float: left;
 }
 
-#current-temperature strong {
+#temperature {
   color: rgb(33, 33, 33);
   font-size: 64px;
   font-weight: 400;
