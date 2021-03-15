@@ -41,8 +41,21 @@ function displayTemperature(response) {
 }
 // set attribute changes the attritbute in the HTML
 
-let apiKey = "3b69d9e884899e81040ee4e357f33f8b";
-let city = "Virginia Beach";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+function search(city) {
+    let apiKey = "3b69d9e884899e81040ee4e357f33f8b";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    
+    axios.get(apiUrl).then(displayTemperature);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+function handleSubmit(event) {
+    event.preventDefault();
+    let cityInputElement = document.querySelector("#city-input");
+    search(cityInputElement.value);
+    //console.log(cityInputElement.value);
+}
+
+//search("Virginia Beach");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
