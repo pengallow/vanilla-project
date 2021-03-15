@@ -30,7 +30,9 @@ function displayTemperature(response) {
     let dateElement = document.querySelector("#date");
     let weatherIconElement = document.querySelector("#weather-icon");
 
-    temperatureElement.innerHTML = Math.round(response.data.main.temp);
+    celsiusTemperature = response.data.main.temp;
+
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
     cityElement.innerHTML = response.data.name;
     weatherCondition.innerHTML = response.data.weather[0].description;
     humidityElement.innerHTML = response.data.main.humidity;
@@ -39,7 +41,7 @@ function displayTemperature(response) {
     weatherIconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
     weatherIconElement.setAttribute("alt", document.querySelector("#current-condition"));
 }
-// set attribute changes the attritbute in the HTML
+// setAttribute changes the attritbute in the HTML
 
 function search(city) {
     let apiKey = "3b69d9e884899e81040ee4e357f33f8b";
@@ -55,7 +57,34 @@ function handleSubmit(event) {
     //console.log(cityInputElement.value);
 }
 
-//search("Virginia Beach");
+function showFahrenheitTemperature(event) {
+    event.preventDefault();
+    let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+    let temperatureElement = document.querySelector("#temperature");
+    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function showCelsiusTemperature(event) {
+    event.preventDefault();
+    celsiusLink.classList.add("active");
+    fahrenheitLink.classList.remove("active");
+    let temperatureElement = document.querySelector("#temperature");
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+// variables that aren't being created inside a function are called "global variables"
+
+search("Virginia Beach");

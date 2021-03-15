@@ -68,3 +68,14 @@ li:first-letter {
   top: -34px;
   font-size: 16px;
 }
+
+.active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+  text-decoration: none;
+}
+
+.active:hover {
+  color: rgb(33, 33, 33);
+  text-decoration: none;
+}
