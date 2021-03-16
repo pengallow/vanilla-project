@@ -1,6 +1,15 @@
 function formatDate(timestamp) {
     // this will calculate the date based on the dt from the api
-    
+    let date = new Date(timestamp);
+
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+    let day = days[date.getDay()];
+
+    return `${day} ${formatHours(timestamp)}`;
+}
+// the time is based on the last update in the API, not from when the user accesses
+
+function formatHours(timestamp) {
     let date = new Date(timestamp);
     let hours = date.getHours();
     if (hours < 10) {
@@ -10,13 +19,9 @@ function formatDate(timestamp) {
     if (minutes < 10) {
         minutes = `0${minutes}`;
     }
-    
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    let day = days[date.getDay()];
 
-    return `${day} ${hours}:${minutes}`;
+    return `${hours}:${minutes}`;
 }
-// the time is based on the last update in the API, not from when the user accesses
 
 function displayTemperature(response) {
     //console.log(response.data);
@@ -43,11 +48,41 @@ function displayTemperature(response) {
 }
 // setAttribute changes the attritbute in the HTML
 
+function displayForecast(response) {
+    //console.log(response.data);
+    let forecastElement = document.querySelector("#forecast");
+    forecastElement.innerHTML = null;
+    let forecast = null;
+
+for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `<div class="col-2">
+                            <h3>${formatHours(forecast.dt * 1000)}</h3>
+                            <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" />
+                            <div class="weather-forecast-temperature">
+                                <strong>${Math.round(forecast.main.temp_max)}º</strong> ${Math.round(forecast.main.temp_min)}º
+                            </div>
+                        </div>`
+}
+
+//forecast = response.data.list[1];
+//forecastElement.innerHTML += `<div class="col-2">
+        //<h3>${formatHours(forecast.dt * 1000)}</h3>
+        //<img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" />
+        //<div class="weather-forecast-temperature">
+            //<strong>${Math.round(forecast.main.temp_max)}º</strong> ${Math.round(forecast.main.temp_min)}º
+        //</div>
+    //</div>`                       
+}
+
 function search(city) {
     let apiKey = "3b69d9e884899e81040ee4e357f33f8b";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     
     axios.get(apiUrl).then(displayTemperature);
+
+    apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${apiKey}`;
+    axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
